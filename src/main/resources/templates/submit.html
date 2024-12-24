@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+     <link rel="stylesheet" href="submitStyle.css" />
+<!--    <link rel="stylesheet" th:href="../static/submitStyle.css">-->
+<!--    <link rel="stylesheet" href="../static/submitStyle.css" />-->
+    <title>Submit</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1>Pizza Craft</h1>
+        <div >
+          <p th:text="'Your Ticket : ' + ${users.ticketNumber}"></p>
+          <p th:text="'Your Name : ' + ${users.userName}"></p>
+          <p th:text="'Pizza name :' + ${users.pizzaName}"></p>
+<!--          <p th:text="'Time :' ${time}">Time: ${time}</p>-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

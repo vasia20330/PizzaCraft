@@ -1,0 +1,25 @@
+
+body{
+    height: 100vh;
+    background-color: LavenderBlush;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+.container{
+    margin:  auto;
+   
+    text-align: center;
+    position: relative;
+    top: -50px;
+    >div{
+        h1{
+           font-size: 4em;
+        }
+        p{
+            font-size: 1.5em;
+            margin: 50px;
+        }
+
+    }
+}

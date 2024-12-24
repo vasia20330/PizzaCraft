@@ -1,0 +1,25 @@
+.container>div{
+    margin: auto;
+    font-size: 1.5em;
+    text-align: center;
+}
+.container>div>div>p{
+      font-size: 1.2em;
+}
+.container{
+    padding: 50px 100px;
+    min-height: 100px;
+    border: 3px solid black;
+    display: flex;
+    /* justify-content: center; */
+    /* align-content: center; */
+    margin:  auto;
+    
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 30vw;
+    background-color: gray;
+    font-family: "Fixedsys", "Microsoft Sans Serif", sans-serif;
+}

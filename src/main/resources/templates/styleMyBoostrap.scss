@@ -1,0 +1,74 @@
+.row {
+    > div {
+        padding: 0 15px;
+        border: 2px solid #000;
+    }
+}
+
+body {
+    background-color: LavenderBlush;
+   
+}
+.containerMy {
+    margin-top: -50px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    > div {
+        padding: 15px;
+        // border: 5px solid  Indigo;
+        margin: auto;
+        min-width: 100px;
+    }
+    label.label-name {
+        text-align: left;
+        display: block;
+        padding: 0 0 0 10px;
+        font-size: 1.2em;
+    }
+}
+button[type="submit"] {
+    font-size: 1.5em;
+
+   
+}
+.block-button-select-pizza {
+    button {
+        margin: 5px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .block-input-reset{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .containerMy {
+        label.label-name {
+            text-align: center;
+            display: block;
+            
+            font-size: 1.2em;
+        }
+        input {
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            font-size: 1.5em;
+            margin: 0 0 0 0;
+            position: relative;
+            top: 50px;
+            left: 2px;
+
+          
+        }
+    }
+    @media screen and (min-width: 567px){
+        .block-input-reset{
+            flex-direction: row;
+        }
+    }
+}
