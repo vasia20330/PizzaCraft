@@ -49,4 +49,28 @@ public class MyController {
 
         return "submit";
     }
+    @GetMapping("/formBootstrap")
+    public String formForPizzaBootstrap(Model model) {
+
+        User user=new User();
+
+        model.addAttribute("user", user);
+
+        return "boostrapPizza";
+    }
+    @PostMapping("/submitBootstrap")
+    public String postSubmitUserBootstrap(@ModelAttribute User user, Model model) {
+
+        Ticket ticket=new Ticket();
+        user.addTicket(ticket);
+        ticket.setUser(user);
+        userRepository.save(user);
+
+        MyService myService=new MyService(userRepository);
+
+        List<UserTicketDTO> userTicketDTOList = userRepository.joinTicket();
+        model.addAttribute("users", myService.getUser(userTicketDTOList));
+
+        return "boostrapSubmitPizza";
+    }
 }

@@ -20,6 +20,8 @@ body{
     display: flex;
     justify-content: center;
     height: 30vw;
-    background-color: gray;
-    font-family: "Fixedsys", "Microsoft Sans Serif", sans-serif;
+    font-family: "MS Sans Serif", "Tahoma", Arial, sans-serif;
+    font-size: 12px; 
+    color: black;
+    background-color: #C0C0C0;
 }

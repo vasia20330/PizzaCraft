@@ -1,0 +1,25 @@
+body {
+  background-color: LavenderBlush;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.container h1 {
+  font-size: 4em;
+}
+.container > form {
+  display: flex;
+  flex-direction: column;
+}
+.container > form button[type=submit] {
+  border-radius: 5px;
+}/*# sourceMappingURL=adminFormBootstrap.css.map */
