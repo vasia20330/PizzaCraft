@@ -16,8 +16,8 @@ public class MyController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/")
-    public String getTicket(Model model) {
+    @GetMapping("/listUsers")
+    public String listUsersWithTicket(Model model) {
 
         List<UserTicketDTO> userTicketDTOList = userRepository.joinTicket();
         model.addAttribute("users", userTicketDTOList);
@@ -73,4 +73,9 @@ public class MyController {
 
         return "boostrapSubmitPizza";
     }
+    @GetMapping("/formAdmin")
+    public  String formAdmin(){
+        return "adminFormBootstrap";
+    }
+
 }
