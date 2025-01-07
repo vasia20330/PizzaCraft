@@ -21,7 +21,7 @@ public class MyController {
 
         List<UserTicketDTO> userTicketDTOList = userRepository.joinTicket();
         model.addAttribute("users", userTicketDTOList);
-        return "ticket";
+        return "listUsers";
     }
 
     @GetMapping("/form")

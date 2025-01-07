@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cssFolder/resetcss.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>ListUsers</title>
+    <style>
+        body{
+            background-color: LavenderBlush;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center p-3 m-3">List Users</h1>
+    <table class="table text-center m-5">
+        <thead>
+        <tr>
+
+            <th scope="col">ticket</th>
+            <th scope="col">name</th>
+            <th scope="col">pizza</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.ticketNumber}">ticket</td>
+            <td th:text="${user.userName}">name</td>
+            <td th:text="${user.pizzaName}">pizzaName</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

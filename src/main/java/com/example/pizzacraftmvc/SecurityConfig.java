@@ -25,7 +25,8 @@ public class SecurityConfig {
                 )
                 .formLogin(form->form
                         .loginPage("/formAdmin")
-                        .defaultSuccessUrl("/formBootstrap")
+                        .defaultSuccessUrl("/listUsers",true)
+                        .failureUrl("/formAdmin?error=true")
                         .permitAll()
                 );
 
@@ -33,17 +34,8 @@ public class SecurityConfig {
 
         return httpSecurity.build();
     }
-    @Bean
-    public InMemoryUserDetailsManager userDetailsManager(){
 
-        UserDetails admin= User.withUsername("admin")
-                .username("admin")
-                .password(passwordEncoder().encode("root"))
-                .roles("ADMIN")
-                .build();
 
-        return new InMemoryUserDetailsManager(admin);
-    }
     @Bean
     public PasswordEncoder passwordEncoder(){
         return  new BCryptPasswordEncoder();
