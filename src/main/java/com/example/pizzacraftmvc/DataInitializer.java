@@ -20,10 +20,13 @@ public class DataInitializer implements CommandLineRunner {
         initData();
     }
     private  void initData(){
-      Admin admin=new Admin();
-      admin.setUserName("admin");
-      admin.setPassword(passwordEncoder.encode("root"));
-      admin.setRole("ROLE_ADMIN");
-      adminRepository.save(admin);
+
+      if (!adminRepository.existsById(1L)){
+          Admin admin=new Admin();
+          admin.setUserName("admin");
+          admin.setPassword(passwordEncoder.encode("root"));
+          admin.setRole("ADMIN");
+          adminRepository.save(admin);
+      }
     }
 }

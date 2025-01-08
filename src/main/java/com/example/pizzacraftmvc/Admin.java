@@ -7,10 +7,10 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_name")
+    @Column(name = "user_name", unique = true )
     private String userName;
     private String password;
-    @Column(name = "role")
+    @Column(name = "role" )
     private String Role;
 
     public void setPassword(String password) {

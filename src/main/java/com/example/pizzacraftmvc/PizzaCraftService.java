@@ -3,15 +3,14 @@ package com.example.pizzacraftmvc;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
 @Service
-public class MyService {
+public class PizzaCraftService {
 
 
     private  UserRepository userRepository;
 
-    public MyService(UserRepository userRepository) {
+    public PizzaCraftService(UserRepository userRepository) {
         this.userRepository = userRepository;
 
     }
