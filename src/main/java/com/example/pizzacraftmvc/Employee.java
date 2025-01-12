@@ -3,7 +3,7 @@ package com.example.pizzacraftmvc;
 import jakarta.persistence.*;
 
 @Entity
-public class Admin {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -8,22 +8,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private  final AdminRepository adminRepository;
+    private  final EmployeeRepository employeeRepository;
 
-    public CustomUserDetailsService(AdminRepository adminRepository) {
-        this.adminRepository = adminRepository;
+    public CustomUserDetailsService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Admin admin=adminRepository.findByUserName(username)
+        Employee employee =employeeRepository.findByUserName(username)
                 .orElseThrow(()->new UsernameNotFoundException("User not found"));
 
         return org.springframework.security.core.userdetails.User
                 .builder()
-                .username(admin.getUserName())
-                .password(admin.getPassword())
-                .roles(admin.getRole())
+                .username(employee.getUserName())
+                .password(employee.getPassword())
+                .roles(employee.getRole())
                 .build();
     }
 }

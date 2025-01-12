@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -21,11 +22,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->auth
 
                         .requestMatchers("/listUsers").hasRole("ADMIN")
+                        .requestMatchers("/listProduct").hasAnyRole("COOK","ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form->form
                         .loginPage("/formAdmin")
-                        .defaultSuccessUrl("/listUsers",true)
+                        .successHandler(customAuthenticationSuccessHandler())
                         .failureUrl("/formAdmin?error=true")
                         .permitAll()
                 );
@@ -40,5 +42,8 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return  new BCryptPasswordEncoder();
     }
-
+    @Bean
+    public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
+        return  new CustomAuthenticationSuccessHandler();
+    }
 }

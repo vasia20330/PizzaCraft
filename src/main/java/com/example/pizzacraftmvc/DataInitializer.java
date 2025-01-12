@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final AdminRepository adminRepository;
+    private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public DataInitializer(AdminRepository adminRepository, PasswordEncoder passwordEncoder) {
-        this.adminRepository = adminRepository;
+    public DataInitializer(EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder) {
+        this.employeeRepository = employeeRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -21,12 +22,21 @@ public class DataInitializer implements CommandLineRunner {
     }
     private  void initData(){
 
-      if (!adminRepository.existsById(1L)){
-          Admin admin=new Admin();
-          admin.setUserName("admin");
-          admin.setPassword(passwordEncoder.encode("root"));
-          admin.setRole("ADMIN");
-          adminRepository.save(admin);
+      if (!employeeRepository.existsById(1L)){
+          Employee employee =new Employee();
+          employee.setUserName("admin");
+          employee.setPassword(passwordEncoder.encode("root"));
+          employee.setRole("ADMIN");
+          employeeRepository.save(employee);
       }
+      if (!employeeRepository.existsById(2L)){
+          Employee cook=new Employee();
+          cook.setUserName("cook");
+          cook.setPassword(passwordEncoder.encode("root"));
+          cook.setRole("COOK");
+          employeeRepository.save(cook);
+      }
+
+
     }
 }

@@ -10,9 +10,12 @@ import java.util.List;
 public class PizzaCraftController {
 
     private UserRepository userRepository;
-
-    public PizzaCraftController(UserRepository userRepository) {
+    private ProcuctRepository procuctRepository;
+    private PizzaCraftService pizzaCraftService;
+    public PizzaCraftController(UserRepository userRepository, ProcuctRepository procuctRepository, PizzaCraftService pizzaCraftService) {
         this.userRepository = userRepository;
+        this.procuctRepository = procuctRepository;
+        this.pizzaCraftService = pizzaCraftService;
     }
 
     @GetMapping("/listUsers")
@@ -38,15 +41,17 @@ public class PizzaCraftController {
     @PostMapping("/submit")
     public String postSubmitUserBootstrap(@ModelAttribute User user, Model model) {
 
+
         Ticket ticket=new Ticket();
         user.addTicket(ticket);
         ticket.setUser(user);
         userRepository.save(user);
+//        SelectionPizza selectionPizza=new SelectionPizza(userRepository);
+        pizzaCraftService.checkAndIncrement(user.getPizzaName());
 
-        PizzaCraftService myService=new PizzaCraftService(userRepository);
 
         List<UserTicketDTO> userTicketDTOList = userRepository.joinTicket();
-        model.addAttribute("users", myService.getUser(userTicketDTOList));
+        model.addAttribute("users", pizzaCraftService.getUser(userTicketDTOList));
 
         return "boostrapSubmitPizza";
     }
@@ -54,5 +59,10 @@ public class PizzaCraftController {
     public  String formAdmin(){
         return "adminFormBootstrap";
     }
+    @GetMapping("/listProduct")
+    public  String listProduct(Model model){
+        model.addAttribute("products",procuctRepository.findAll());
 
+        return "listProduct";
+    }
 }
